@@ -1,0 +1,2 @@
+fichero de texto de prueba
+creado desde 0 en VSCode

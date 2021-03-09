@@ -41,6 +41,9 @@ const server = http.createServer((req, res) => {
     }else if (file.split('.')[2] == 'png') {
       console.log(file.split('.')[2])
       type = 'image/png';
+    }else if (file.split('.')[2] == 'mp3') {
+      console.log(file.split('.')[2])
+      type = 'audio/mp3'
     }
 
     if (err) {  //-- Ha ocurrido algun error

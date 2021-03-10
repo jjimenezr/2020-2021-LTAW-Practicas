@@ -10,16 +10,24 @@
 <!-- hoja de estilo-->
 <link rel="stylesheet" href="./home/home.css">
 
-<body>
-    <div class="banner">
-        <div class="foto">
-            <a href="./home.html"><img src="./home/logo_animas.PNG" alt="logo_tienda" width="200px"></a>
-        </div>
-        <div class="lema">
-            <h1 >Poderosos cómo Goku, flexibles cómo luffy, </h1>
-            <h1 >mágicos cómo natsu y rápidos cómo naruto</h1>
-        </div>
-        <button type="button" name="button" id="carro" class="carrito"><img src="./home/carrito.jpg" alt="carro" width="75px"></button>
+<script src="./home/home.js"></script>
+
+<body onload="main()">
+    <div class="foto">
+        <a href="./home.html"><img src="./home/logo_animas.PNG" alt="logo_tienda" width="200px"></a>
     </div>
+    <div class="lema">
+        <h1 >Poderosos cómo Goku, flexibles cómo luffy, </h1>
+        <h1 >mágicos cómo natsu y rápidos cómo naruto</h1>
+    </div>
+    <button type="button" name="button" id="carro" class="carrito"><img src="./home/carrito.jpg" alt="carro" width="75px"></button>
+    <br><button type="button" name="buttondb" id="db" class="buttondb"><img src="./home/db.jpg" alt="db" width="300px"></button>
+    <button type="button" name="buttonft" id="ft" class="buttonft"><img src="./home/ft.PNG" alt="db" width="300px"></button>
+    <br><button type="button" name="buttonnt" id="nt" class="buttonnt"><img src="./home/nt.png" alt="db" width="300px"></button>
+    <button type="button" name="buttonop" id="op" class="buttonop"><img src="./home/op.jpg" alt="db" width="300px"></button>
+    <audio src="./home/saiyan.mp3" id="goku"></audio>
+    <audio src="./home/moetekita.mp3" id="natsu"></audio>
+    <audio src="./home/gatling.mp3" id="luffy"></audio>
+    <audio src="./home/dattebayo.mp3" id="naruto"></audio>
 </body>
 </html>

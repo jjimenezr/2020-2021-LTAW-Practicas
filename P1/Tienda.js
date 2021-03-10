@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
 
   //-- dependiendo del pathname le damos una u otra cosa
   if (client_request.pathname == '/favicon.ico') {
-    file = './imagenes_tienda/icon.png';
+    file = './icon.png';
   }else if (client_request.pathname == '/') {
     file = './home.html';
   }else{
@@ -29,6 +29,7 @@ const server = http.createServer((req, res) => {
   //-- leemos el rescurso path para saber que entregarle al cliente
   fs.readFile(file, (err, data) => {
     //-- clasificamos que tipo de archivo me pide
+    console.log(file)
     if (file.split('.')[2] == 'css') {
       console.log(file.split('.')[2])
       type = 'text/css';

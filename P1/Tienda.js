@@ -23,7 +23,30 @@ const server = http.createServer((req, res) => {
   }else if (client_request.pathname == '/') {
     file = './home.html';
   }else{
-    file = "." + client_request.pathname;
+    file = ".";
+    path = client_request.pathname.split('/');
+    console.log(path)
+    if (path[2] == 'home' || path[2] == 'error404') {
+      client_request.pathname = '';
+      for (let i = 2; i < path.length; i++) {
+        client_request.pathname += "/" + path[i]; 
+      }
+      file += client_request.pathname;
+    }else if (path[3] == 'home' || path[3] == 'error404' || path[3] == 'home.html') {
+      client_request.pathname = '';
+      for (let i = 3; i < path.length; i++) {
+        client_request.pathname += "/" + path[i]; 
+      }
+      file += client_request.pathname;
+    }else if (path[4] == 'home' || path[4] == 'error404' || path[4] == 'home.html') {
+      client_request.pathname = '';
+      for (let i = 4; i < path.length; i++) {
+        client_request.pathname += "/" + path[i]; 
+      }
+      file += client_request.pathname;
+    }else{
+      file += client_request.pathname
+    }
   }
 
   //-- leemos el rescurso path para saber que entregarle al cliente
@@ -45,6 +68,9 @@ const server = http.createServer((req, res) => {
     }else if (file.split('.')[2] == 'mp3') {
       console.log(file.split('.')[2])
       type = 'audio/mp3'
+    }else if (file.split('.')[2] == 'js') {
+      console.log(file.split('.')[2])
+      type = 'text/javascript'
     }
 
     if (err) {  //-- Ha ocurrido algun error

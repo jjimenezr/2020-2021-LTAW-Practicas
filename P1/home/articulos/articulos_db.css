@@ -1,0 +1,64 @@
+body{
+    background-image: url(./db_2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+@font-face{
+    font-family: letranime;
+    src: url(./animeace2_ital.ttf);
+  }
+
+.lema{
+    color: red;
+    font-family: letranime;
+    font-size: 12px;
+    margin-top: 20px;
+    float: left;
+    padding-left: 190px;
+    text-shadow: 4px 3px darkblue;
+}
+
+.foto{
+    margin-left: 20px;
+    margin-top: 20px;
+    float: left;
+}
+
+.carrito{
+    float: right;
+    margin-right: 30px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+}
+
+.carrito:hover{
+    opacity: 0.6;
+}
+
+#producto1{
+    margin-top: 100px;
+    margin-right: 300px;
+    border-style: double;
+    border-color: darkblue;
+    border-width: 10px;
+}
+
+#producto2{
+    margin-top: 100px;
+    margin-left: 220px;
+    border-style: double;
+    border-color: orange;
+    border-width: 10px;
+}
+
+#producto3{
+    margin-top: 100px;
+    margin-left: 220px;
+    border-style: double;
+    border-color: yellow;
+    border-width: 10px;
+}

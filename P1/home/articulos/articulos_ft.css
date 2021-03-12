@@ -83,9 +83,9 @@ body{
 }
 
 #text2{
-    color: darkorange;
+    color: silver;
     border-style: double;
-    border-color: darkred;
+    border-color: black;
     background-color: darkblue;
     margin-left: 32.5%;
     margin-top: 40%;
@@ -96,10 +96,10 @@ body{
 }
 
 #text3{
-    color: whitesmoke;
+    color: darkblue;
     border-style: double;
-    border-color: darkred;
-    background-color: darkgreen;
+    border-color: darkblue;
+    background-color: gold;
     margin-left: 32.5%;
     margin-top: 65%;
     position: absolute;

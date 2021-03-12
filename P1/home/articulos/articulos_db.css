@@ -107,3 +107,42 @@ body{
     padding: 40px;
     opacity: 0.8;
 }
+
+.compra1{
+    position: absolute;
+    margin-top: 19%;
+    margin-left: 80%;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+}
+
+.compra1:hover{
+    opacity: 0.6;
+}
+
+.compra2{
+    position: absolute;
+    margin-top: 44%;
+    margin-left: 80%;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+}
+
+.compra2:hover{
+    opacity: 0.6;
+}
+
+.compra3{
+    position: absolute;
+    margin-top: 69%;
+    margin-left: 80%;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+}
+
+.compra3:hover{
+    opacity: 0.6;
+}

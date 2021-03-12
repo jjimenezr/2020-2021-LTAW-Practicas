@@ -3,10 +3,12 @@ function main() {
     var botonft = document.getElementById("ft");
     var botonop = document.getElementById("op");
     var botonnt = document.getElementById("nt");
+    var botoncarro = document.getElementById("carro")
     var audiodb = document.getElementById("goku");
     var audioft = document.getElementById("natsu");
     var audioop = document.getElementById("luffy");
     var audiont = document.getElementById("naruto");
+    var audiohey = document.getElementById("hey")
 
     botondb.onmouseover = () => {
         audiodb.play();
@@ -22,5 +24,9 @@ function main() {
 
     botonnt.onmouseover = () => {
         audiont.play();
+    }
+
+    botoncarro.onclick = () => {
+        audiohey.play();
     }
 }

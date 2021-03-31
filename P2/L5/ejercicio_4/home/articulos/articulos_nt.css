@@ -1,0 +1,148 @@
+body{
+    background-image: url(./nt_2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+@font-face{
+    font-family: letranime;
+    src: url(./animeace2_ital.ttf);
+  }
+
+.lema{
+    color: red;
+    font-family: letranime;
+    font-size: 12px;
+    margin-top: 20px;
+    float: left;
+    text-shadow: 4px 3px darkblue;
+    position: absolute;
+    margin-left: 425px;
+}
+
+.foto{
+    margin-left: 20px;
+    margin-top: 20px;
+    float: left;
+    position: absolute;
+}
+
+.carrito{
+    margin-right: 30px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+    position: absolute;
+    margin-left: 90%;
+}
+
+.carrito:hover{
+    opacity: 0.6;
+}
+
+#producto1{
+    margin-top: 15%;
+    border-style: double;
+    border-color:yellow;
+    border-width: 10px;
+    position: absolute;
+    margin-left: 10%;
+}
+
+#producto2{
+    margin-top: 40%;
+    margin-left: 10%;
+    border-style: double;
+    border-color: red;
+    border-width: 10px;
+    position: absolute;
+}
+
+#producto3{
+    margin-top: 65%;
+    margin-left: 10%;
+    border-style: double;
+    border-color: orange;
+    border-width: 10px;
+    position: absolute;
+}
+
+#text1{
+    color: whitesmoke;
+    border-style: double;
+    border-color: olive;
+    background-color: red;
+    margin-left: 32.5%;
+    margin-top: 15%;
+    position: absolute;
+    margin-right: 25%;
+    padding: 22px;
+    opacity: 0.8;
+}
+
+#text2{
+    color: red;
+    border-style: double;
+    border-color: orange;
+    background-color: black;
+    margin-left: 32.5%;
+    margin-top: 40%;
+    position: absolute;
+    margin-right: 25%;
+    padding: 22px;
+    opacity: 0.8;
+}
+
+#text3{
+    color: black;
+    border-style: double;
+    border-color: brown;
+    background-color: olive;
+    margin-left: 32.5%;
+    margin-top: 65%;
+    position: absolute;
+    margin-right: 25%;
+    padding: 25px;
+    opacity: 0.8;
+}
+
+.compra1{
+    position: absolute;
+    margin-top: 19%;
+    margin-left: 80%;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+}
+
+.compra1:hover{
+    opacity: 0.6;
+}
+
+.compra2{
+    position: absolute;
+    margin-top: 44%;
+    margin-left: 80%;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+}
+
+.compra2:hover{
+    opacity: 0.6;
+}
+
+.compra3{
+    position: absolute;
+    margin-top: 69%;
+    margin-left: 80%;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+}
+
+.compra3:hover{
+    opacity: 0.6;
+}

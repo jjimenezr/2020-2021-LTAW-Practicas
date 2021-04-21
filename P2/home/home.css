@@ -1,0 +1,92 @@
+body{
+    background-image: url(./fondo_home.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+@font-face{
+    font-family: letranime;
+    src: url(./animeace2_ital.ttf);
+  }
+
+.lema{
+    color: red;
+    font-family: letranime;
+    font-size: 12px;
+    margin-top: 20px;
+    float: left;
+    padding-left: 190px;
+    text-shadow: 4px 3px darkblue;
+}
+
+.foto{
+    margin-left: 20px;
+    margin-top: 20px;
+    float: left;
+}
+
+.carrito{
+    float: right;
+    margin-right: 30px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 15px;
+    border: 3px double darkred;
+}
+
+.carrito:hover{
+    opacity: 0.6;
+}
+
+.buttondb{
+    background-color: black;
+    border-radius: 15px;
+    border: 3px double darkred;
+    margin-right: 300px;
+    margin-top: 100px;
+}
+
+.buttonft{
+    background-color: black;
+    border-radius: 15px;
+    border: 3px double darkred;
+    margin-left: 170px;
+    margin-top: 100px;
+    padding-top: 20px;
+}
+
+.buttonnt{
+    background-color: black;
+    border-radius: 15px;
+    border: 3px double darkred;
+    margin-right: 300px;
+    margin-top: 100px;
+    margin-left: 220px;
+}
+
+.buttonop{
+    background-color: black;
+    border-radius: 15px;
+    border: 3px double darkred;
+    margin-top: 100px;
+    margin-left: 170px;
+}
+
+.buttondb:hover{
+    opacity: 0.6;
+}
+
+.buttonft:hover{
+    opacity: 0.6;
+}
+
+.buttonnt:hover{
+    opacity: 0.6;
+}
+
+.buttonop:hover{
+    opacity: 0.6;
+}
+
+  

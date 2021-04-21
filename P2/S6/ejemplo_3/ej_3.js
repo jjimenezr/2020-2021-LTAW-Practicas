@@ -17,7 +17,6 @@ const server = http.createServer((req, res) => {
     
   
     //-- Por defecto entregar formulario
-    let content_type = "text/html";
     let content = fs.readFileSync('form1.html','utf-8');
   
     if (myURL.pathname == '/procesar') {

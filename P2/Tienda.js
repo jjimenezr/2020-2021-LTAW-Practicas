@@ -12,10 +12,12 @@ const server = http.createServer((req, res) => {
   console.log("recibido activacion de voz del señor stark!");
   
   //-- obtenemos la url de la peticion y la parseamos para obtener todos los parametros
+  const myURL = new URL(req.url, 'http://' + req.headers['host']); 
   let client_request = url.parse(req.url, true);
   let file = "";
   let Type = "";
   let productos = "";
+  let change = "";
   //console.log(client_request.pathname);
 
   //-- dependiendo del pathname le damos una u otra cosa
@@ -31,6 +33,16 @@ const server = http.createServer((req, res) => {
       productos += "- " + element["nombre"] + "<br>";
     });
     change = fs.readFileSync(file, 'utf-8');
+  }else if (client_request.pathname == '/login') {
+    user = myURL.searchParams.get('nombre');
+    lista_json = fs.readFileSync("tienda.json");
+    lista = JSON.parse(lista_json);
+    lista["usuarios"].forEach(element => {
+      if (user == element["nombre"]) {
+        file = './home.html';
+        change = fs.readFileSync(file, 'utf-8');
+      }
+    });
   }else{
     file = ".";
     path = client_request.pathname.split('/');
@@ -91,6 +103,10 @@ const server = http.createServer((req, res) => {
     } else {
       if (file == "./productos.html") {
         data = change.replace('*cambio*', productos);
+      }
+      if (file == "./home.html" && change != "") {
+        sesion = "bienvenido " + "<br>" + user;
+        data = change.replace('iniciar sesion', sesion);
       }
       //-- terminamos la respuestas
       res.statusCode = 200;   //-- codigo para decir que todo va bien

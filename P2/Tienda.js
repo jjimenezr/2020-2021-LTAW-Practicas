@@ -43,6 +43,22 @@ const server = http.createServer((req, res) => {
         change = fs.readFileSync(file, 'utf-8');
       }
     });
+  }else if (client_request.pathname == '/compra') {
+    file = './home.html';
+    user = "laxus";
+    buy = ["figura laxus"];
+    direction = myURL.searchParams.get('direccion');
+    card = myURL.searchParams.get('tarjeta');
+    pedido = {
+      "usuario":user,
+      "direccion":direction,
+      "tarjeta":card,
+      "compra":buy
+    };
+    lista_json = fs.readFileSync("tienda.json");
+    lista = JSON.parse(lista_json);
+    lista["pedidos"].push(pedido);
+    fs.writeFileSync("tienda.json", JSON.stringify(lista));
   }else{
     file = ".";
     path = client_request.pathname.split('/');

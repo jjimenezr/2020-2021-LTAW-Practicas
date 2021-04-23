@@ -5,6 +5,39 @@ const url = require('url');
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 
+function get_user(req) {
+
+  //-- Leer la Cookie recibida
+  const cookie = req.headers.cookie;
+
+  //-- Hay cookie
+  if (cookie) {
+    
+    //-- Obtener un array con todos los pares nombre-valor
+    let pares = cookie.split(";");
+    
+    //-- Variable para guardar el usuario
+    let user;
+
+    //-- Recorrer todos los pares nombre-valor
+    pares.forEach((element, index) => {
+
+      //-- Obtener los nombres y valores por separado
+      let [nombre, valor] = element.split('=');
+
+      //-- Leer el usuario
+      //-- Solo si el nombre es 'user'
+      if (nombre.trim() === 'user') {
+        user = valor;
+      }
+    });
+
+    //-- Si la variable user no está asignada
+    //-- se devuelve null
+    return user || null;
+  }
+}
+
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
     
@@ -17,7 +50,8 @@ const server = http.createServer((req, res) => {
   let file = "";
   let Type = "";
   let productos = "";
-  let change = "";
+  let user_name = "";
+  let user = get_user(req);
   //console.log(client_request.pathname);
 
   //-- dependiendo del pathname le damos una u otra cosa
@@ -34,18 +68,21 @@ const server = http.createServer((req, res) => {
     });
     change = fs.readFileSync(file, 'utf-8');
   }else if (client_request.pathname == '/login') {
-    user = myURL.searchParams.get('nombre');
+    user_name = myURL.searchParams.get('nombre');
     lista_json = fs.readFileSync("tienda.json");
     lista = JSON.parse(lista_json);
     lista["usuarios"].forEach(element => {
-      if (user == element["nombre"]) {
+      if (user_name == element["nombre"]) {
         file = './home.html';
         change = fs.readFileSync(file, 'utf-8');
+        //-- Asignar la cookie de usuario
+        res.setHeader('Set-Cookie', "user=" + user_name);
+        user = user_name;
       }
     });
   }else if (client_request.pathname == '/compra') {
     file = './home.html';
-    user = "laxus";
+    user_name = "laxus";
     buy = ["figura laxus"];
     direction = myURL.searchParams.get('direccion');
     card = myURL.searchParams.get('tarjeta');
@@ -120,9 +157,10 @@ const server = http.createServer((req, res) => {
       if (file == "./productos.html") {
         data = change.replace('*cambio*', productos);
       }
-      if (file == "./home.html" && change != "") {
-        sesion = "bienvenido " + "<br>" + user;
+      if (file == "./home.html" && user) {
+        sesion = "bienvenid@ " + "<br>" + user;
         data = change.replace('iniciar sesion', sesion);
+        data = data.replace("./login.html", "");
       }
       //-- terminamos la respuestas
       res.statusCode = 200;   //-- codigo para decir que todo va bien

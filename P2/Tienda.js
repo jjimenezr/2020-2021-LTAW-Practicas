@@ -4,6 +4,7 @@ const url = require('url');
 
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
+let carrito = "";
 
 function get_user(req) {
 
@@ -96,6 +97,114 @@ const server = http.createServer((req, res) => {
     lista = JSON.parse(lista_json);
     lista["pedidos"].push(pedido);
     fs.writeFileSync("tienda.json", JSON.stringify(lista));
+  }else if (client_request.pathname == '/compra_figura_vegeta') {
+    file = "./articulos_db.html"
+    if (carrito == "") {
+      carrito = "carrito=figura_vegeta";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",figura_vegeta";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_camiseta_goku') {
+    file = "./articulos_db.html"
+    if (carrito == "") {
+      carrito = "carrito=camiseta_goku";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",camiseta_goku";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_radar') {
+    file = "./articulos_db.html"
+    if (carrito == "") {
+      carrito = "carrito=radar";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",radar";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_figura_laxus') {
+    file = "./articulos_ft.html"
+    if (carrito == "") {
+      carrito = "carrito=figura_laxus";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",figura_laxus";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_sudadera_gray') {
+    file = "./articulos_ft.html"
+    if (carrito == "") {
+      carrito = "carrito=sudadera_gray";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",sudadera_gray";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_llaves_lucy') {
+    file = "./articulos_ft.html"
+    if (carrito == "") {
+      carrito = "carrito=llaves_lucy";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",llaves_lucy";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_figura_minato') {
+    file = "./articulos_nt.html"
+    if (carrito == "") {
+      carrito = "carrito=figura_minato";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",figura_minato";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_bata_akatsuki') {
+    file = "./articulos_nt.html"
+    if (carrito == "") {
+      carrito = "carrito=bata_akatsuki";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",bata_akatsuki";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_rollo_naruto') {
+    file = "./articulos_nt.html"
+    if (carrito == "") {
+      carrito = "carrito=rollo_naruto";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",rollo_naruto";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_figura_barbablanca') {
+    file = "./articulos_op.html"
+    if (carrito == "") {
+      carrito = "carrito=figura_barbablanca";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",figura_barbablanca";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_sudadera_law') {
+    file = "./articulos_op.html"
+    if (carrito == "") {
+      carrito = "carrito=sudadera_law";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",sudadera_law";
+      res.setHeader('Set-Cookie', carrito);
+    }
+  }else if (client_request.pathname == '/compra_one_piece') {
+    file = "./articulos_op.html"
+    if (carrito == "") {
+      carrito = "carrito=one_piece";
+      res.setHeader('Set-Cookie', carrito);
+    }else{
+      carrito = carrito + ",one_piece";
+      res.setHeader('Set-Cookie', carrito);
+    }
   }else{
     file = ".";
     path = client_request.pathname.split('/');

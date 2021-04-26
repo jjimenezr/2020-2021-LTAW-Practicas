@@ -39,6 +39,45 @@ function get_user(req) {
   }
 }
 
+function get_carrito(req) {
+
+  //-- Leer la Cookie recibida
+  const cookie = req.headers.cookie;
+
+  //-- Hay cookie
+  if (cookie) {
+    
+    //-- Obtener un array con todos los pares nombre-valor
+    let pares = cookie.split(";");
+    
+    //-- Variable para guardar el pedido
+    let buy = [];
+
+    //-- Recorrer todos los pares nombre-valor
+    pares.forEach((element, index) => {
+
+      //-- Obtener los nombres y valores por separado
+      let [nombre, valor] = element.split('=');
+
+      //-- Leer el pedido
+      //-- Solo si el nombre es 'carrito'
+      if (nombre.trim() === 'carrito') {
+        valor.split(",").forEach(producto => {
+          buy.push(producto);
+        });
+      }
+    });
+
+    //-- Si la variable carrito no está asignada
+    //-- se devuelve null
+    if (buy != []) {
+      return buy;
+    }else{
+      return null;
+    }
+  }
+}
+
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
     
@@ -51,8 +90,10 @@ const server = http.createServer((req, res) => {
   let file = "";
   let Type = "";
   let productos = "";
+  let sold = "";
   let user_name = "";
   let user = get_user(req);
+  //let buy = get_carrito(req);
   //console.log(client_request.pathname);
 
   //-- dependiendo del pathname le damos una u otra cosa
@@ -82,21 +123,29 @@ const server = http.createServer((req, res) => {
       }
     });
   }else if (client_request.pathname == '/compra') {
-    file = './home.html';
-    user_name = "laxus";
-    buy = ["figura laxus"];
-    direction = myURL.searchParams.get('direccion');
-    card = myURL.searchParams.get('tarjeta');
-    pedido = {
-      "usuario":user,
-      "direccion":direction,
-      "tarjeta":card,
-      "compra":buy
-    };
-    lista_json = fs.readFileSync("tienda.json");
-    lista = JSON.parse(lista_json);
-    lista["pedidos"].push(pedido);
-    fs.writeFileSync("tienda.json", JSON.stringify(lista));
+    user_name = get_user(req);
+    if (user) {
+      file = './pedido.html'
+      buy = get_carrito(req);
+      direction = myURL.searchParams.get('direccion');
+      card = myURL.searchParams.get('tarjeta');
+      pedido = {
+        "usuario":user,
+        "direccion":direction,
+        "tarjeta":card,
+        "compra":buy
+      };
+      lista_json = fs.readFileSync("tienda.json");
+      lista = JSON.parse(lista_json);
+      lista["pedidos"].push(pedido);
+      fs.writeFileSync("tienda.json", JSON.stringify(lista));
+      pedido["compra"].forEach(element => {
+        sold += "- " + element + "<br>";
+      });
+      change_2 = fs.readFileSync(file, 'utf-8');
+    } else {
+      file = './home.html';
+    }
   }else if (client_request.pathname == '/compra_figura_vegeta') {
     file = "./articulos_db.html"
     if (carrito == "") {
@@ -270,6 +319,19 @@ const server = http.createServer((req, res) => {
         sesion = "bienvenid@ " + "<br>" + user;
         data = change.replace('iniciar sesion', sesion);
         data = data.replace("./login.html", "");
+        console.log
+      }
+      if (file == "./pedido.html") {
+        data = change_2.replace('*cambio*', sold);
+      }
+      if (file == "./compra.html") {
+        cambio = get_carrito(req);
+        venta = "";
+        cambio.forEach(element => {
+          venta += "- " + element + "<br>";
+        });
+        lec_compra = fs.readFileSync(file, 'utf-8')
+        data = lec_compra.replace('*cambio*', venta)
       }
       //-- terminamos la respuestas
       res.statusCode = 200;   //-- codigo para decir que todo va bien

@@ -97,4 +97,21 @@ body{
     padding-left: 80px;
 }
 
+#caja{
+    margin-left: 630px;
+    margin-top: 50px;
+    border-color: red;
+    border-radius: 20px;
+    background: #151515;
+    color: white;
+    width: 300px;
+    height: 30px;
+}
+
+#display1{
+    color: white;
+    margin-left: 640px;
+    font-size: 20px;
+}
+
   

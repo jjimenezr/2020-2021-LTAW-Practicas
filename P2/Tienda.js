@@ -5,6 +5,7 @@ const url = require('url');
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 let carrito = "";
+let resultado = "";
 
 function get_user(req) {
 
@@ -88,13 +89,10 @@ const server = http.createServer((req, res) => {
   const myURL = new URL(req.url, 'http://' + req.headers['host']); 
   let client_request = url.parse(req.url, true);
   let file = "";
-  let Type = "";
   let productos = "";
   let sold = "";
   let user_name = "";
   let user = get_user(req);
-  //let buy = get_carrito(req);
-  //console.log(client_request.pathname);
 
   //-- dependiendo del pathname le damos una u otra cosa
   if (client_request.pathname == '/favicon.ico') {
@@ -254,6 +252,49 @@ const server = http.createServer((req, res) => {
       carrito = carrito + ",one_piece";
       res.setHeader('Set-Cookie', carrito);
     }
+  }else if (client_request.pathname.startsWith("/busqueda")) {
+    //-- Leer los parámetros
+    let param1 = myURL.searchParams.get('param1');
+
+    param1 = param1.toUpperCase();
+
+    console.log("  Param: " +  param1);
+
+    let result = [];
+
+    lista_json = fs.readFileSync("tienda.json");
+    lista = JSON.parse(lista_json);
+
+    for (let prod of lista["productos"]) {
+
+        //-- Pasar a mayúsculas
+        prodU = prod["nombre"].toUpperCase();
+
+        //-- Si el producto comienza por lo indicado en el parametro
+        //-- meter este producto en el array de resultados
+        if (prodU.startsWith(param1)) {
+            result.push(prod["nombre"]);
+        }
+    }
+    console.log(result);
+    content = JSON.stringify(result);
+    resultado = result
+    res.setHeader('Content-Type', 'application/json');
+    res.write(content);
+    res.end()
+    return
+  }else if (client_request.pathname.startsWith("/find")) {
+    if (resultado[0] == "figura Vegeta" || resultado[0] == "camiseta Goku" || resultado[0] == "radar bulma") {
+      file = "./articulos_db.html";
+    }else if (resultado[0] == "figura minato" || resultado[0] == "bata akatsuki" || resultado[0] == "rollo jiraiya") {
+      file = "./articulos_nt.html";
+    }else if (resultado[0] == "figura Laxus" || resultado[0] == "sudadera Gray" || resultado[0] == "llaves Lucy") {
+      file = "./articulos_ft.html";
+    }else if (resultado[0] == "figura barbablanca" || resultado[0] == "sudadera law" || resultado[0] == "one piece") {
+      file = "./articulos_op.html";
+    }else{
+      file = "./home.html";
+    }
   }else{
     file = ".";
     path = client_request.pathname.split('/');
@@ -294,7 +335,7 @@ const server = http.createServer((req, res) => {
     }else if (file.split('.')[2] == 'html') {
       console.log(file.split('.')[2])
       type = 'text/html';
-    }else if (file.split('.')[2] == 'png') {
+    }else if (file.split('.')[2] == 'PNG' || file.split('.')[2] == 'png') {
       console.log(file.split('.')[2])
       type = 'image/png';
     }else if (file.split('.')[2] == 'mp3') {
@@ -302,7 +343,13 @@ const server = http.createServer((req, res) => {
       type = 'audio/mp3'
     }else if (file.split('.')[2] == 'js') {
       console.log(file.split('.')[2])
-      type = 'text/javascript'
+      type = 'application/javascript'
+    }else if (file.split('.')[2] == 'json') {
+      console.log(file.split('.')[2])
+      type = 'application/json'
+    }else if (file.split('.')[2] == 'jpg') {
+      console.log(file.split('.')[2])
+      type = 'image/jpeg';
     }
 
     if (err) {  //-- Ha ocurrido algun error
@@ -336,7 +383,7 @@ const server = http.createServer((req, res) => {
       //-- terminamos la respuestas
       res.statusCode = 200;   //-- codigo para decir que todo va bien
       res.statusMessage = "OK";   //-- mensaje de que todo va bien
-      res.setHeader('Content-Type', Type);
+      res.setHeader('Content-Type', type);
       res.write(data);
       res.end();
     }

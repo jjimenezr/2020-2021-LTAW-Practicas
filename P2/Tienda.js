@@ -286,14 +286,19 @@ const server = http.createServer((req, res) => {
   }else if (client_request.pathname.startsWith("/find")) {
     if (resultado[0] == "figura Vegeta" || resultado[0] == "camiseta Goku" || resultado[0] == "radar bulma") {
       file = "./articulos_db.html";
+      resultado = "";
     }else if (resultado[0] == "figura minato" || resultado[0] == "bata akatsuki" || resultado[0] == "rollo jiraiya") {
       file = "./articulos_nt.html";
+      resultado = "";
     }else if (resultado[0] == "figura Laxus" || resultado[0] == "sudadera Gray" || resultado[0] == "llaves Lucy") {
       file = "./articulos_ft.html";
+      resultado = "";
     }else if (resultado[0] == "figura barbablanca" || resultado[0] == "sudadera law" || resultado[0] == "one piece") {
       file = "./articulos_op.html";
+      resultado = "";
     }else{
       file = "./home.html";
+      resultado = "";
     }
   }else{
     file = ".";

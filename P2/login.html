@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
 </head>
+
+<!-- hoja de estilo-->
+<link rel="stylesheet" href="./login.css">
+
 <body>
-    <form action="/login" method="get">
-        Nombre de usuario:
-        <input type="text" name="nombre"/>
-        <p></p>
-          <input type="submit" value="Enviar"/>
-    </form>
+    <div class="login">
+        <form action="/login" method="get">
+            <div class="nombre">
+                Nombre de usuario:
+                <input type="text" name="nombre" id="barrita"/></div>
+            <p></p>
+              <input type="submit" value="Enviar" id="boton"/>
+        </form>
+    </div>
 </body>
 </html>

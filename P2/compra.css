@@ -1,0 +1,63 @@
+body{
+    background-image: url(./home/fondo_compra.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+@font-face{
+    font-family: letranime;
+    src: url(./home/animeace2_ital.ttf);
+}
+
+.compra{
+    border-radius: 5px;
+    border-style: double;
+    border-color: lightblue;
+    padding: 30px;
+    margin-right: 800px;
+    margin-left: 300px;
+    margin-top: 200px;
+    color: gray;
+    font-family: letranime;
+    font-size: 22px;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+}
+
+#boton{
+    width: 250px;
+    height: 50px;
+    margin-top: 40px;
+    font-family: letranime;
+    font-size: 22px;
+    background-color: green;
+    border-radius: 12px;
+    color: red;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#boton:hover {
+    background-color: blue;
+    color: white;
+}
+
+.nombre{
+    margin-top: 75px;
+}
+
+#barrita{
+    margin-top: 20px;
+    border-color: red;
+    border-radius: 20px;
+    background: #151515;
+    color: red;
+    width: 200px;
+    height: 30px;
+}
+
+.pedido{
+    margin-top: 50px;
+}

@@ -6,17 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
 </head>
+
+<!-- hoja de estilo-->
+<link rel="stylesheet" href="./compra.css">
+
 <body>
-    <form action="/compra" method="get">
-        dirección de envio:
-        <input type="text" name="direccion"/>
-        <p></p>
-        tarjeta de crédito:
-        <input type="text" name="tarjeta"/>
-        <p></p>
-          <input type="submit" value="Enviar"/>
-    </form>
-    <h2>Productos del carrito</h2>
-    <p>*cambio*</p>
+    <div class="compra">
+        <form action="/compra" method="get">
+            dirección de envio:
+            <input type="text" name="direccion" id="barrita"/>
+            <p></p>
+            tarjeta de crédito:
+            <input type="text" name="tarjeta" id="barrita"/>
+            <p></p>
+              <input type="submit" value="Enviar" id="boton"/>
+        </form>
+        <div class="pedido">
+            <h2>Productos del carrito</h2>
+            <p>*cambio*</p>
+        </div>
+    </div>
 </body>
 </html>

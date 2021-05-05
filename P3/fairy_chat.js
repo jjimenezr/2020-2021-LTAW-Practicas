@@ -67,8 +67,12 @@ io.on('connect', (socket) => {
             }else if (msg == "/date") {
                 let date = new Date();
                 socket.send("Lucy: segun Horologium hoy es " + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear());
+            }else if (msg == "/misiones") {
+                socket.send("MISIONES:" + "<br>" + "MISION CLASE SS: en busca de acnologia" + "<br>" + "MISION CLASE A: en la isla galuna hay gente extraña"
+                + "<br>" + "MISION CLASE D: ayuda a recuperar un libro de un ladrón");
+            }else{
+                socket.send("Mirajane: lo siento no te puedo dar una respuesta, usa /help te podría ayudar")
             }
-            
         }else{
             //-- Reenviarlo a todos los clientes conectados
             io.send(msg);

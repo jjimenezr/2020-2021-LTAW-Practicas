@@ -84,4 +84,4 @@ io.on('connect', (socket) => {
 //-- Lanzar el servidor HTTP
 //-- ¡Que empiecen los juegos de los WebSockets!
 server.listen(PUERTO);
-console.log("Escuchando en puerto: " + PUERTO);
+console.log("El gremio abre sus puertas: " + PUERTO);

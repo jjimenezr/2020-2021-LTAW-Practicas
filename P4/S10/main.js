@@ -3,6 +3,10 @@ const electron = require('electron');
 
 console.log("Arrancando proton digo electron...");
 
+//-- Variable para acceder a la ventana principal
+//-- Se pone aquí para que sea global al módulo principal
+let win = null;
+
 //-- Punto de entrada. En cuanto electron está listo,
 //-- ejecuta esta función
 electron.app.on('ready', ()=>{
@@ -31,5 +35,13 @@ electron.app.on('ready', ()=>{
 
     //-- Cargar interfaz gráfica en HTML
     win.loadFile("index.html");
+
+    //-- Esperar a que la página se cargue y se muestre
+    //-- y luego enviar el mensaje al proceso de renderizado para que 
+    //-- lo saque por la interfaz gráfica
+    win.on('ready-to-show', () => {
+        console.log("todo bien?");
+        win.webContents.send('print', "MENSAJE ENVIADO DESDE PROCESO MAIN");
+    });
 
 });

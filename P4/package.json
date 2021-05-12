@@ -1,0 +1,9 @@
+{
+    "name": "fairychat",
+    "description": "chat del gremio en electron",
+    "version": "0.1.0",
+    "main": "fairy_chat.js",
+    "scripts": {
+        "start": "electron ."
+    }
+}

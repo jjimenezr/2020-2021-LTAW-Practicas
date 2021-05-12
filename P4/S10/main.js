@@ -17,6 +17,10 @@ electron.app.on('ready', ()=>{
     //-- En la parte superior se nos ha creado el menu
     //-- por defecto
     //-- Si lo queremos quitar, hay que añadir esta línea
-    win.setMenuBarVisibility(false);
+    // win.setMenuBarVisibility(false);
+
+    //-- Cargar contenido web en la ventana
+    //-- La ventana es en realidad.... ¡un navegador!
+    win.loadURL('https://www.yugioh-card.com/es/');
 
 });

@@ -6,6 +6,10 @@ h1 {
     text-align: center;
 }
 
+.blue {
+    color: red;
+}
+
 #display {
     border: 2px solid black;
     padding: 10px;

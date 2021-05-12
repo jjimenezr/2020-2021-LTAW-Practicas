@@ -5,6 +5,7 @@ const express = require('express');
 const colors = require('colors');
 const fs = require('fs');
 const electron = require('electron');
+const ip = require('ip');
 
 //-- constantes y variables utiles
 const PUERTO = 9000;

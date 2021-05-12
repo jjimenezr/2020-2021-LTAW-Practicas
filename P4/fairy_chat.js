@@ -4,6 +4,7 @@ const http = require('http');
 const express = require('express');
 const colors = require('colors');
 const fs = require('fs');
+const electron = require('electron');
 
 //-- constantes y variables utiles
 const PUERTO = 9000;
@@ -79,6 +80,24 @@ io.on('connect', (socket) => {
         }
     });
 
+});
+
+electron.app.on('ready', () => {
+    //-- Aquí se crea la ventana y se hace lo relacionado con la gui
+    //-- Pero el servidor no va aquí dentro, si no fuera, como en la práctica 3
+    console.log("Evento Ready for the battle!");
+
+    //-- Crear la ventana principal de nuestra aplicación
+    win = new electron.BrowserWindow({
+        width: 800,  //-- Anchura 
+        height: 600,  //-- Altura
+
+        //-- Permitir que la ventana tenga ACCESO AL SISTEMA
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false
+        }
+    });
 });
 
 //-- Lanzar el servidor HTTP

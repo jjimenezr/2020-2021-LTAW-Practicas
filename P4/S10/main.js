@@ -21,6 +21,9 @@ electron.app.on('ready', ()=>{
 
     //-- Cargar contenido web en la ventana
     //-- La ventana es en realidad.... ¡un navegador!
-    win.loadURL('https://www.yugioh-card.com/es/');
+    // win.loadURL('https://www.yugioh-card.com/es/');
+
+    //-- Cargar interfaz gráfica en HTML
+    win.loadFile("index.html");
 
 });

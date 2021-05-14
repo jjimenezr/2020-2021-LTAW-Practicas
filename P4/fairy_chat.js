@@ -7,10 +7,14 @@ const fs = require('fs');
 const electron = require('electron');
 const ip = require('ip');
 
+//-- Variable para acceder a la ventana principal
+//-- Se pone aquí para que sea global al módulo principal
+let win = null;
+
 //-- constantes y variables utiles
 const PUERTO = 9000;
 let list = 0;
-win.webContents.send('list', list);
+//win.webContents.send('list', list);
 
 //-- Crear una nueva aplciacion web
 const app = express();
@@ -56,6 +60,7 @@ io.on('connect', (socket) => {
     //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
     socket.on("message", (msg)=> {
         console.log("Mensaje Recibido!: " + msg.green);
+        win.webContents.send('msg', msg)
 
         //-- si el mensaje comienza con '/' se tratara como un comando
         if (msg.startsWith("/")) {
@@ -109,6 +114,14 @@ electron.app.on('ready', () => {
     win.on('ready-to-show', () => {
         win.webContents.send('ip', 'http://' + ip.address() + ':' + PUERTO);
     });
+});
+
+//-- Esperar a recibir los mensajes de botón apretado (Test) del proceso de 
+//-- renderizado. Al recibirlos se escribe una cadena en la consola
+electron.ipcMain.handle('test', (event, msg) => {
+    console.log("-> Mensaje: " + msg);
+    //-- enviamos el mensaje a todos los usarios
+    io.send(msg);
 });
 
 //-- Lanzar el servidor HTTP

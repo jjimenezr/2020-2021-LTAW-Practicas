@@ -9,7 +9,7 @@
     <!-- It removes the security Warning: Insecure Content-Security-Policy -->
     <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:; default-src 'self';" />
 
-    <!--<link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
 
     <!-- Cargar el proceso asociado a esta página -->
     <script src="index.js" defer></script>
@@ -17,31 +17,30 @@
     <title>fairy chat</title>
 </head>
 <body>
-    <h1>FAIRY CHAT HOME</h1>
+    <h1 id="title">FAIRY CHAT HOME</h1>
 
-    <hr>
+    <div class="efecto">
         <h2>Versiones/efecto:</h2>
         <ul>
-            <li>Version de Node: <span id="info1" class="efecto"></span> </li>
-            <li>Version de Chrome: <span id="info2" class="efecto"></span></li>
-            <li>Version de Electron: <span id="info3" class="efecto"></span></li>
-            <li>Direccion Ip: <span id="info4" class="efecto"></span></li>
+            <li>Version de Node: <span id="info1"></span> </li>
+            <li>Version de Chrome: <span id="info2"></span></li>
+            <li>Version de Electron: <span id="info3"></span></li>
+            <li>Direccion Ip: <span id="info4"></span></li>
         </ul>
+    </div>
 
-    <hr>
-
-    <hr>
+    <div class="trampa">
         <p>Duelistas en el gremio: <span id="users"></span></p>
         <button id="btn_test">colocar carta (mensaje de prueba)</button>
-    <hr>
+    </div>
 
-    <hr>
-        <h2 id>MENSAJES DE LOS DUELISTAS</h2>
+    <div class="magica">
+        <h2>MENSAJES DE LOS DUELISTAS</h2>
         <p id="display"></p> 
-    <hr>
+    </div>> 
 
-    <hr>
+    <div class="ritual">
         <img src="" alt="qr" id="qrc">
-    <hr>
+    </div>
 </body>
 </html>

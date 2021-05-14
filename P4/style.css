@@ -1,0 +1,91 @@
+body{
+    background-image: url(./fondo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+@font-face{
+    font-family: letranime;
+    src: url(./fairy_public/animeace2_ital.ttf);
+}
+
+#title{
+    border: solid orangered;
+    border-radius: 10px;
+    text-align: center;
+    overflow: auto;
+    font-family: letranime;
+    font-size: 15px;
+    width: 700px;
+    padding: 25px;
+    color: black;
+    background-color: #f3e5ab;
+}
+
+.magica{
+    border: solid orangered;
+    border-radius: 10px;
+    overflow: auto;
+    font-family: letranime;
+    font-size: 15px;
+    width: 700px;
+    padding: 25px;
+    color: black;
+    background-color: #bdecb6;
+    margin-top: 10px;
+}
+
+.trampa{
+    border: solid orangered;
+    border-radius: 10px;
+    overflow: auto;
+    font-family: letranime;
+    font-size: 15px;
+    width: 700px;
+    padding: 25px;
+    color: black;
+    background-color: #e3b1d2;
+    margin-top: 10px;
+}
+
+#btn_test{
+    width: 250px;
+    height: 50px;
+    font-family: letranime;
+    font-size: 10px;
+    background-color: red;
+    border-radius: 12px;
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#btn_test:hover {
+    background-color: white;
+    color: red;
+}
+
+.ritual{
+    border: solid orangered;
+    border-radius: 10px;
+    overflow: auto;
+    font-family: letranime;
+    font-size: 15px;
+    width: 700px;
+    padding: 25px;
+    color: black;
+    background-color: #e0ffff;
+}
+
+.efecto{
+    border: solid orangered;
+    border-radius: 10px;
+    overflow: auto;
+    font-family: letranime;
+    font-size: 15px;
+    width: 700px;
+    padding: 25px;
+    color: black;
+    background-color: #fed8b1;
+}

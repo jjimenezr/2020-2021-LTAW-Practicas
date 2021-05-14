@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Only scripts and files from the local machine are allowed -->
+    <!-- It removes the security Warning: Insecure Content-Security-Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';" />
+
+    <!--<link rel="stylesheet" href="style.css"> -->
+
+    <!-- Cargar el proceso asociado a esta página -->
+    <script src="index.js" defer></script>
+
+    <title>fairy chat</title>
+</head>
+<body>
+    <h1>FAIRY CHAT HOME</h1>
+
+    <hr>
+        <h2>Versiones/efecto:</h2>
+        <ul>
+            <li>Version de Node: <span id="info1" class="efecto"></span> </li>
+            <li>Version de Chrome: <span id="info2" class="efecto"></span></li>
+            <li>Version de Electron: <span id="info3" class="efecto"></span></li>
+            <li>Direccion Ip: <span id="info4" class="efecto"></span></li>
+        </ul>
+
+    <hr>
+
+    <hr>
+        <p>Duelistas en el gremio: <span id="users"></span></p>
+    <hr>
+</body>
+</html>

@@ -10,6 +10,7 @@ const ip = require('ip');
 //-- constantes y variables utiles
 const PUERTO = 9000;
 let list = 0;
+win.webContents.send('list', list);
 
 //-- Crear una nueva aplciacion web
 const app = express();
@@ -43,12 +44,13 @@ io.on('connect', (socket) => {
     socket.send('BIENVENIDO AL GREMIO');
     socket.broadcast.emit('message', 'NUEVA ENTRADA EN EL GREMIO');
     list += 1;
-
+    win.webContents.send('list', list);
 
     //-- Evento de desconexión
     socket.on('disconnect', function(){
         console.log('MIEMBRO SALIENDO DE MISION, GAMBARE'.cyan);
         list -= 1;
+        win.webContents.send('list', list);
     });  
 
     //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
@@ -86,7 +88,7 @@ io.on('connect', (socket) => {
 electron.app.on('ready', () => {
     //-- Aquí se crea la ventana y se hace lo relacionado con la gui
     //-- Pero el servidor no va aquí dentro, si no fuera, como en la práctica 3
-    console.log("Evento Ready for the battle!");
+    console.log("Electron Ready for the battle!");
 
     //-- Crear la ventana principal de nuestra aplicación
     win = new electron.BrowserWindow({
@@ -98,6 +100,14 @@ electron.app.on('ready', () => {
             nodeIntegration: true,
             contextIsolation: false
         }
+    });
+
+    //-- Cargar interfaz gráfica en HTML
+    win.loadFile("index.html");
+
+    //-- obtenemos direccion de ip y se la mandamos al proceso de renderizado
+    win.on('ready-to-show', () => {
+        win.webContents.send('ip', 'http://' + ip.address() + ':' + PUERTO);
     });
 });
 

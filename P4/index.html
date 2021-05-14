@@ -7,7 +7,7 @@
 
     <!-- Only scripts and files from the local machine are allowed -->
     <!-- It removes the security Warning: Insecure Content-Security-Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:; default-src 'self';" />
 
     <!--<link rel="stylesheet" href="style.css"> -->
 
@@ -38,6 +38,10 @@
     <hr>
         <h2 id>MENSAJES DE LOS DUELISTAS</h2>
         <p id="display"></p> 
+    <hr>
+
+    <hr>
+        <img src="" alt="qr" id="qrc">
     <hr>
 </body>
 </html>
